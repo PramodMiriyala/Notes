@@ -27,19 +27,16 @@ https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
 ```
 This command adds the Jenkins repository to the /etc/apt/sources.list.d/jenkins.list file. It specifies that the repository is signed by the key downloaded in the previous step.
 
-* echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]":
-This part constructs a line that specifies a new APT repository. The deb keyword indicates that this is a binary package repository.
-The [signed-by=/usr/share/keyrings/jenkins-keyring.asc] part tells APT to use the specified GPG key to verify the packages from this repository. This is important for security, ensuring that the packages are from a trusted source.
+* "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]": This part of the command is the repository entry for Jenkins. It specifies the package type (deb for Debian packages) and the URL where the packages are hosted. The [signed-by=/usr/share/keyrings/jenkins-keyring.asc] indicates that the repository is signed with a specific key located at /usr/share/keyrings/jenkins-keyring.asc.
 
-* https://pkg.jenkins.io/debian-stable binary/:
-This is the URL of the Jenkins APT repository. It points to the stable version of Jenkins packages for Debian-based systems.
+* https://pkg.jenkins.io/debian-stable binary/: This is the URL of the Jenkins repository for Debian. It points to the binary packages for the stable release.
 
-* | sudo tee /etc/apt/sources.list.d/jenkins.list:
-The | operator pipes the output of the echo command to the tee command.
-sudo tee /etc/apt/sources.list.d/jenkins.list writes the repository information to a new file named jenkins.list in the /etc/apt/sources.list.d/ directory. This directory is where APT looks for additional sources of packages.
+* |: The pipe symbol (|) is used to redirect the output of the echo command to the input of the next command (sudo tee)
+
+* sudo tee /etc/apt/sources.list.d/jenkins.list: The tee command reads from standard input and writes to a file. Here, it writes the repository entry to the file /etc/apt/sources.list.d/jenkins.list. The sudo prefix ensures that the command runs with superuser privileges.
 
 * > /dev/null:
-This part suppresses the output of the tee command, so it doesn’t display the repository line in the terminal.
+    This part of the command redirects the standard output of tee to /dev/null, effectively discarding it. It’s commonly used to suppress unnecessary output
 ```
 ---
 
