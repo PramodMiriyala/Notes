@@ -15,7 +15,7 @@ PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/u
 source /etc/environment
 mvn --version
 ```
-
+---
 ### Note:
 ```
 tar: This is the command to interact with tar archives.
@@ -23,4 +23,4 @@ tar: This is the command to interact with tar archives.
 -x: Extract files from the archive
 -C /path/to/directory: Change to the specified directory before extracting
 -v: verbose mode, which means tar will display the names
-```
+``` 
