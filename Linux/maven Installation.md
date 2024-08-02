@@ -18,7 +18,8 @@ mvn --version
 ---
 ### Note:
 ```
-tar: This is the command to interact with tar archives.
+wget: downloads file at current directory
+tar: this will unzip tar file.
 -z: decompress the archive using gzip compression.
 -x: Extract files from the archive
 -C /path/to/directory: Change to the specified directory before extracting
