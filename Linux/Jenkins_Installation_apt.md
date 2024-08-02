@@ -17,7 +17,7 @@ https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
 ```
 ---
 
-1. Add the Jenkins repository to your apt sources list:
+2. Add the Jenkins repository to your apt sources list:
 ```bash
 echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
 https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
@@ -43,7 +43,7 @@ This part suppresses the output of the tee command, so it doesn’t display the 
 ```
 ---
 
-1. Update your apt package manager and Install jenkins:
+3. Update your apt package manager and Install jenkins:
 ```bash
 sudo apt update
 sudo apt install jenkins
