@@ -1,0 +1,28 @@
+certifications:
+    certification_name:
+    - Certified Python Developer
+    - yaml
+    - json
+    issue_date: March 2020
+    issuing_organization: Python Institute
+education:
+    degree: Bachelor of Science in Computer Science
+    graduation_year: 2018
+    institution: University of Anytown
+personal_info:
+    address: 123 Main St, Anytown, USA
+    email: john.doe@example.com
+    linkedin: linkedin.com/in/johndoe
+    name: John Doe
+    phone: (123) 456-7890
+skills:
+- Python
+- JavaScript
+- Django
+- Flask
+- React
+- SQL
+- Git
+- RESTful APIs
+summary: Results-driven software engineer with 5+ years of experience in developing
+    scalable web applications and a passion for problem-solving.

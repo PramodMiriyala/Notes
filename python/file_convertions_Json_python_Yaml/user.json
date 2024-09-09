@@ -1,0 +1,9 @@
+{
+    "user": {
+        "name": "Jane Doe",
+        "age": 30,
+        "email": "jane.doe@example.com",
+        "is_active": true
+    }
+}
+
