@@ -1,0 +1,23 @@
+# Use the official Python image as a base
+FROM python:3.12
+
+# Set the working directory in the container
+WORKDIR /library
+
+# Copy the requirements file into the container
+COPY requirements.txt .
+
+# Install the dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the entire FastAPI application into the container
+COPY . .
+
+# Expose the port that the app runs on
+EXPOSE 8000
+
+# Set the environment variables
+ENV DATABASE_URL=postgresql://user:password@db:5432/library
+
+# Command to run the application using Uvicorn
+CMD ["uvicorn", "main:app", "--reload", "--workers", "1", "--host", "0.0.0.0", "--port", "8000"]

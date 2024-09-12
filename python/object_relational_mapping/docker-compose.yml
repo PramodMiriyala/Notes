@@ -1,0 +1,33 @@
+
+services:
+  db:
+    image: postgres:13.2  # Use the specified PostgreSQL image
+    container_name: postgres  # Name the container
+    restart: always  # Restart the container automatically
+    environment:
+      - POSTGRES_USER=user  # Set the PostgreSQL user
+      - POSTGRES_PASSWORD=password  # Set the PostgreSQL password
+      - POSTGRES_DB=library  # Set the initial database name
+    ports:
+      - "5432:5432"  # Map port 5432 on the host to port 5432 in the container
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persist data in a named volume
+
+  library-api:
+    build:
+      context: .  # Build the image from the current directory
+      dockerfile: Dockerfile  # Specify the Dockerfile to use
+    container_name: fastapi  # Name the container
+    restart: always  # Restart the container automatically
+    ports:
+      - "8000:8000"  # Map port 8000 on the host to port 8000 in the container
+    depends_on:
+      - db  # Ensure the db service starts before this service
+    environment:
+      - DATABASE_URL=postgresql://user:password@db:5432/library  # Connection string for the database
+    volumes:
+      - .:/library  # Mount the current directory to /library in the container
+    command: uvicorn main:app --reload --workers 1 --host 0.0.0.0 --port 8000 # Command to run the FastAPI app
+
+volumes:
+  postgres_data:  # Define a named volume for PostgreSQL data
